@@ -53,8 +53,8 @@ FieldType Field::get(int x, int y)
  * exception if the location is illegal
 **/
  bool Field::isSafe(int x, int y)
- {
- 	return inBounds(x,y) && (_map[x][y] != MINE_HIDDEN && _map[x][y] != MINE_SHOWN);
+ { 
+   return inBounds(x,y) && (_map[x][y] != MINE_HIDDEN && _map[x][y] != MINE_SHOWN);
  }
 
 /**
@@ -78,4 +78,12 @@ void Field::revealAdjacent(int x, int y)
 		revealAdjacent(x+1,y);
 		revealAdjacent(x,y+1);
 	}
+}
+/**
+ *  Sets the valid location to MINE_SHOWN
+**/
+void Field::set(int x,int y)
+{
+  if(inBounds(x,y))
+    _map[x][y] = MINE_SHOWN;
 }
